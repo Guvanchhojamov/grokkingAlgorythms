@@ -48,20 +48,19 @@ func main() {
 	//fmt.Println(slice)
 	s := generateSortedSlice(10)
 	fmt.Println(s)
-	search_binary(s, 77)
+	search_binary(s, 4)
 }
 
 func search_binary(slice []int, target int) int {
 	ilow := 0
 	ihigh := len(slice) - 1
 
-	fmt.Println("ilow:", ilow, "ihigh:", ihigh, "target:", target)
+	fmt.Println(ilow, ihigh)
 	var operations = 0
 
 	if ilow == ihigh {
 		if slice[ilow] == target {
-			fmt.Println("target:", target, "operations:", operations)
-			return 0
+			return target
 		} else {
 			return -1
 		}
@@ -70,18 +69,18 @@ func search_binary(slice []int, target int) int {
 	for ilow <= ihigh {
 		imid := (ilow + ihigh) / 2
 		if slice[imid] == target {
-			fmt.Println("ilow:", ilow, "ihigh:", ihigh, "imid:", imid)
+			fmt.Println("ilow:", ilow, "ihigh:", ihigh)
 			fmt.Println("target number index", imid)
 			fmt.Println("operations:", operations)
 			return imid
 		}
 		if slice[imid] < target {
 			ilow = imid + 1
-			fmt.Println("ilow:", ilow, "ihigh:", ihigh, "imid:", imid)
+			fmt.Println("ilow:", ilow, "ihigh:", ihigh)
 			operations += 1
 		} else {
 			ihigh = imid - 1
-			fmt.Println("ilow:", ilow, "ihigh:", ihigh, "imid:", imid)
+			fmt.Println("ilow:", ilow, "ihigh:", ihigh)
 			operations += 1
 		}
 	}
